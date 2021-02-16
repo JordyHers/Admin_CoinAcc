@@ -567,50 +567,50 @@ class _AddProductState extends State<AddProduct> {
           final FirebaseStorage storage = FirebaseStorage.instance;
 
 
-          final String picture1 =
-              "1-${DateTime
+          final picture1 =
+              '1-${DateTime
               .now()
               .millisecondsSinceEpoch
-              .toString()}.jpg";
-          final String picture2 =
-              "2-${DateTime
+              .toString()}.jpg';
+          final picture2 =
+              '2-${DateTime
               .now()
               .millisecondsSinceEpoch
-              .toString()}.jpg";
-          final String picture3 =
-              "3-${DateTime
+              .toString()}.jpg';
+          final picture3 =
+              '3-${DateTime
               .now()
               .millisecondsSinceEpoch
-              .toString()}.jpg";
-          StorageUploadTask task1 =
+              .toString()}.jpg';
+          var task1 =
           storage.ref().child('products/$category/$picture1').putFile(_image1);
-          StorageUploadTask task2 =
+          var task2 =
           storage.ref().child('products/$category/$picture2').putFile(_image2);
-          StorageUploadTask task3 =
+          var task3 =
           storage.ref().child('products/$category/$picture3').putFile(_image3);
 
-          StorageTaskSnapshot snapshot1 = await task1.onComplete.then((snapshot) => snapshot);
+          var snapshot1 = await task1.onComplete.then((snapshot) => snapshot);
           print('task1 completed');
-          StorageTaskSnapshot snapshot2 = await task2.onComplete.then((snapshot) => snapshot);
-          StorageTaskSnapshot snapshot4 = await task3.onComplete.then((snapshot) => snapshot);
+          var snapshot2 = await task2.onComplete.then((snapshot) => snapshot);
+          var snapshot4 = await task3.onComplete.then((snapshot) => snapshot);
 
-          task1.onComplete.then((snapshot3) async {
+          await task1.onComplete.then((snapshot3) async {
             imageUrl1 = await snapshot1.ref.getDownloadURL();
             imageUrl2 = await snapshot2.ref.getDownloadURL();
             imageUrl3 = await snapshot4.ref.getDownloadURL();
 
             productService.uploadProduct({
-              "name": productNameController.text,
-              "price": double.parse(priceController.text),
-              "picture": imageUrl1,
-              "picture2": imageUrl2,
-              "picture3": imageUrl3,
-              "sizes": selectedSizes,
-              "pointure":selectedPointure,
-              "search": setSearchParam(productNameController.text),
-              "quantity": int.parse(quatityController.text),
-              "description":descriptionController.text,
-              "category": _currentCategory,
+              'name': productNameController.text,
+              'price': double.parse(priceController.text),
+              'picture': imageUrl1,
+              'picture2': imageUrl2,
+              'picture3': imageUrl3,
+              'sizes': selectedSizes,
+              'pointure':selectedPointure,
+              'search': setSearchParam(productNameController.text),
+              'quantity': int.parse(quatityController.text),
+              'description':descriptionController.text,
+              'category': _currentCategory,
               'sale': onSale,
             } ,category );
 
@@ -630,10 +630,10 @@ class _AddProductState extends State<AddProduct> {
 
     }
   }
-  setSearchParam(String name) {
-    List<String> caseSearchList = List();
-    String temp = "";
-    for (int i = 0; i < name.length; i++) {
+  List<String> setSearchParam(String name) {
+    var caseSearchList = List<String>();
+    String temp = '';
+    for (var i = 0; i < name.length; i++) {
       temp = temp + name[i];
       caseSearchList.add(temp);
     }

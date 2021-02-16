@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
 class UsersService {
-  Firestore _firestore = Firestore.instance;
+  final Firestore _firestore = Firestore.instance;
   String ref = 'users';
 
   void createCategory(String name) {
     var id = Uuid();
-    String categoryId = id.v1();
+    var categoryId = id.v1();
 
     _firestore
         .collection('categories')
@@ -22,7 +22,7 @@ class UsersService {
 
 
   void createUser(Map data) {
-    _firestore.collection(ref).document(data["uid"]).setData(data);
+    _firestore.collection(ref).document(data['uid']).setData(data);
   }
 
   Future<UserModel> getUserById(String id)=> _firestore.collection(ref).document(id).get().then((doc){

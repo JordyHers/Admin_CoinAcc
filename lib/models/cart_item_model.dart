@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CartItemModel {
-  static const ID = "id";
-  static const NAME = "name";
-  static const IMAGE = "image";
-  static const PRODUCT_ID = "productId";
-  static const PRICE = "price";
-  static const DESCRIPTION = "description";
+  static const ID = 'id';
+  static const NAME = 'name';
+  static const IMAGE = 'image';
+  static const PRODUCT_ID = 'productId';
+  static const PRICE = 'price';
+  static const DESCRIPTION = 'description';
 
   String _id;
   String _name;
